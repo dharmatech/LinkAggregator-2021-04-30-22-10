@@ -86,5 +86,24 @@ namespace LinkAggregator.Pages.Links
 
             return Redirect(HttpContext.Request.Headers["Referer"]);
         }
+
+        public async Task<IActionResult> OnPostCommentVoteAsync(int id, int score)
+        {
+            if (User == null)
+                return Redirect(HttpContext.Request.Headers["Referer"]);
+
+            if (User.Identity.IsAuthenticated == false)
+                return Redirect(HttpContext.Request.Headers["Referer"]);
+
+            var comment = await _context.Comment
+                .Include(comment => comment.Votes)
+                .FirstOrDefaultAsync(comment => comment.Id == id);
+
+            await comment.Vote(score, UserManager.GetUserId(User));
+
+            await _context.SaveChangesAsync();
+
+            return Redirect(HttpContext.Request.Headers["Referer"]);
+        }
     }
 }
