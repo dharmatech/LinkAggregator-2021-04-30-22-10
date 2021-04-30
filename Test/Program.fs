@@ -97,6 +97,44 @@ start chrome
     
     screenshot "." "screenshot-links" |> ignore
 
+"user guy - comment" &&& fun _ ->
+
+    url "http://localhost:5000/Links/Details?id=2"
+
+    "/html/body/div/main/div[2]/form/div/textarea" << "Lisp Machine"
+
+    click "Add Comment"
+
+"user linus - comment" &&& fun _ ->
+
+    url "http://localhost:5000/Identity/Account/Login"
+
+    "#Input_UserName"   << "linus"
+
+    "#Input_Password"   << "Secret123!"
+
+    click "Log in"
+
+
+    url "http://localhost:5000/Links/Details?id=2"
+
+
+    click "/html/body/div/main/div[1]/dl/dd[5]/form[1]/button"
+
+    click "/html/body/div/main/div[2]/ul/li/form[1]/button"
+
+
+    click "/html/body/div/main/div[2]/ul/li/button"
+
+    "/html/body/div/main/div[2]/ul/li/div[2]/form/div/textarea" << "Linux"
+
+    click "/html/body/div/main/div[2]/ul/li/div[2]/form/button"
+
+
+    resize (780, 870)
+
+    screenshot "." "screenshot-comments" |> ignore
+
 [<EntryPoint>]
 let main args =
     
