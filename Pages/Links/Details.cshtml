@@ -5,6 +5,24 @@
     ViewData["Title"] = "Details";
 }
 
+@{ 
+    async Task Template(IList<Comment> comments)
+    {
+        foreach (var comment in comments)
+        {
+            <ul>
+                <li>
+                    @comment.User
+
+                    <div>
+                        @comment.Text
+                    </div>
+                </li>
+            </ul>
+        }
+    }
+}
+
 <h1>Details</h1>
 
 <div>
