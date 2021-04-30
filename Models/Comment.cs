@@ -63,5 +63,18 @@ namespace LinkAggregator.Models
                 vote.Score = vote.Score == score ? 0 : score;
             }
         }
+
+        public async Task AddComment(string text, string commenterUserId)
+        {
+            var comment = new Comment()
+            {
+                UserId = commenterUserId,
+                ParentCommentId = Id,
+                Text = text,
+                DateTime = DateTime.Now
+            };
+
+            Comments.Add(comment);
+        }
     }
 }
