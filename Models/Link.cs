@@ -61,5 +61,18 @@ namespace LinkAggregator.Models
         }
 
         public List<Comment> Comments { get; set; }
+
+        public async Task AddComment(string text, string commenterUserId)
+        {
+            var comment = new Comment()
+            {
+                UserId = commenterUserId,
+                LinkId = Id,
+                Text = text,
+                DateTime = DateTime.Now
+            };
+
+            Comments.Add(comment);
+        }
     }
 }
