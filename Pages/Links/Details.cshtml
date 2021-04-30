@@ -63,6 +63,22 @@
         </dd>
     </dl>
 </div>
+
+<div>
+    <h1>Comments</h1>
+
+    <form asp-page-handler="AddComment" method="post">
+
+        <div class="form-group">
+            <input type="hidden" name="id" value="@Model.Link.Id" />
+            <textarea name="text"></textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Add Comment</button>
+
+    </form>
+</div>
+
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Link.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
