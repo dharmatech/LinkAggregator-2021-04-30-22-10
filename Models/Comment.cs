@@ -11,7 +11,7 @@ namespace LinkAggregator.Models
     {
         public int Id { get; set; }
 
-        public int LinkId { get; set; }
+        public int? LinkId { get; set; }
         public Link Link { get; set; }
 
         public string Text { get; set; }
