@@ -27,5 +27,8 @@ namespace LinkAggregator.Models
             Votes
                 .Where(vote => vote.CommentId == Id)
                 .Sum(vote => vote.Score);
+
+        public CommentVote UserVote(string userId) =>
+            Votes.FirstOrDefault(vote => vote.UserId == userId);
     }
 }
