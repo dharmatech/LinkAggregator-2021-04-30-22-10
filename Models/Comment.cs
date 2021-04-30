@@ -37,5 +37,27 @@ namespace LinkAggregator.Models
 
             return vote == null ? 0 : vote.Score;
         }
+
+        public async Task Vote(int score, string voterUserId)
+        {
+            var vote = UserVote(voterUserId);
+
+            if (vote == null)
+            {
+                vote = new CommentVote()
+                {
+                    UserId = voterUserId,
+                    CommentId = Id,
+                    Score = score,
+                    DateTime = DateTime.Now
+                };
+
+                Votes.Add(vote);
+            }
+            else
+            {
+                vote.Score = vote.Score == score ? 0 : score;
+            }
+        }
     }
 }
