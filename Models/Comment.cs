@@ -30,5 +30,12 @@ namespace LinkAggregator.Models
 
         public CommentVote UserVote(string userId) =>
             Votes.FirstOrDefault(vote => vote.UserId == userId);
+
+        public int UserScore(string userId)
+        {
+            var vote = UserVote(userId);
+
+            return vote == null ? 0 : vote.Score;
+        }
     }
 }
