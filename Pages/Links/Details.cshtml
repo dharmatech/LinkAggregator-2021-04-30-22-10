@@ -18,7 +18,31 @@
                         @comment.Text
                     </div>
 
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <form asp-page-handler="CommentVote" style="display:inline" method="post">
+                            <input type="hidden" name="id" value="@comment.Id" />
+                            <input type="hidden" name="score" value="1" />
+                            <button class="btn @(comment.UserScore(Model.CurrentUserId()) == 1 ? "btn-primary" : "btn-secondary")"
+                                    type="submit">
+                                U
+                            </button>
+                        </form>
+                    }
+
                     @comment.Score()
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <form asp-page-handler="CommentVote" style="display:inline" method="post">
+                            <input type="hidden" name="id" value="@comment.Id" />
+                            <input type="hidden" name="score" value="-1" />
+                            <button class="btn @(comment.UserScore(Model.CurrentUserId()) == -1 ? "btn-primary" : "btn-secondary")"
+                                    type="submit">
+                                D
+                            </button>
+                        </form>
+                    }
                 </li>
             </ul>
         }
