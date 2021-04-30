@@ -59,5 +59,7 @@ namespace LinkAggregator.Models
                 vote.Score = vote.Score == score ? 0 : score;
             }
         }
+
+        public List<Comment> Comments { get; set; }
     }
 }
