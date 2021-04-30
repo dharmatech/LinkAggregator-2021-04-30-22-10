@@ -14,6 +14,10 @@ namespace LinkAggregator.Models
         public int? LinkId { get; set; }
         public Link Link { get; set; }
 
+        public int? ParentCommentId { get; set; }
+        public Comment ParentComment { get; set; }
+        public List<Comment> Comments { get; set; }
+
         public string Text { get; set; }
         public DateTime DateTime { get; set; }
 
