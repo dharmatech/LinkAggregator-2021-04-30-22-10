@@ -39,6 +39,7 @@ namespace LinkAggregator.Pages.Links
             Link = await _context.Link
                 .Include(link => link.User)
                 .Include(link => link.Votes)
+                .Include(link => link.Comments)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Link == null)
