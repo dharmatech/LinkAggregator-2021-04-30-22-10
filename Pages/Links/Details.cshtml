@@ -45,7 +45,7 @@
                 <form asp-page-handler="Vote" style="display:inline" method="post">
                     <input type="hidden" name="id" value="@Model.Link.Id" />
                     <input type="hidden" name="score" value="1" />
-                    <button class="btn @(Model.Link.UserScore(Model.CurrentUserid()) == 1 ? "btn-primary" : "btn-secondary")">U</button>
+                    <button class="btn @(Model.Link.UserScore(Model.CurrentUserId()) == 1 ? "btn-primary" : "btn-secondary")">U</button>
                 </form>
             }
 
@@ -56,7 +56,7 @@
                 <form asp-page-handler="Vote" style="display:inline" method="post">
                     <input type="hidden" name="id" value="@Model.Link.Id" />
                     <input type="hidden" name="score" value="-1" />
-                    <button class="btn @(Model.Link.UserScore(Model.CurrentUserid()) == -1 ? "btn-primary" : "btn-secondary")">D</button>
+                    <button class="btn @(Model.Link.UserScore(Model.CurrentUserId()) == -1 ? "btn-primary" : "btn-secondary")">D</button>
                 </form>
             }
 

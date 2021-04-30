@@ -27,7 +27,7 @@ namespace LinkAggregator.Pages.Links
 
         public Link Link { get; set; }
 
-        public string CurrentUserid() => UserManager.GetUserId(User);
+        public string CurrentUserId() => UserManager.GetUserId(User);
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
