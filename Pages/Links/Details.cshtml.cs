@@ -42,6 +42,20 @@ namespace LinkAggregator.Pages.Links
                 .Include(link => link.Comments).ThenInclude(comment => comment.Votes)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
+            void load_comments(List<Comment> comments)
+            {
+                foreach (var comment in comments)
+                {
+                    _context.Entry(comment).Reference(comment => comment.User).Load();
+                    _context.Entry(comment).Collection(comment => comment.Comments).Load();
+                    _context.Entry(comment).Collection(comment => comment.Votes).Load();
+
+                    load_comments(comment.Comments);
+                }
+            }
+
+            load_comments(Link.Comments);
+
             if (Link == null)
             {
                 return NotFound();
